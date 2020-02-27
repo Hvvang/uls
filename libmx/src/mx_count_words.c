@@ -1,20 +1,18 @@
 #include "libmx.h"
 
 int mx_count_words(const char *str, char c) {
-    int word = 0;
-    int res = 0;
+	int count = 0;
+	int i = 0;
 
-    if (!str)
-        return -1;
-    for (;*str; ++str) {
-        if (*str != c) {
-            if (word == 0) {
-                word = 1;
-                res++;
-            }
-        }
-        else if (word)
-            word = 0;
-    }
-    return res;
+	if (str == NULL)
+		return -1;
+	while (str[i] != '\0') {
+	    while (str[i] == c && str[i] != '\0')
+	    	i++;
+	    if (str[i] != c && str[i] != '\0')
+	    	count++;
+	    while (str[i] != c && str[i] != '\0')
+	    	i++;   
+	}
+	return count;
 }
